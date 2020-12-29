@@ -30,4 +30,32 @@ for (page in 1:100)
 #  allreviews=c(allreviews,reviwe)
 }
 
+
+getwd() #데이터 저장경로 확인하기 
+
+df <- read.csv('/rstudio_files/r_basic/csv_exam.csv') #확인된 저장경로에 파일 저장 후 불러오기
+
+#20개의 데이터를 불러오기
+head(df, 20)
+
+
+write.csv(df, file='mydf.csv')#데이터를 파일로 작성하고 싶은 경우 write함수 사용하면 된다
+View(df)#데이터의 새로운 스크립트 창으로 한눈에 확인 가능
+
+# 데이터프레임 만들기 (직접설정)
+df2<- data.frame(v1= c(1,2,1), v2=c(2,3,2))
+df2
+
+# 데이터프레임 만들기
+no <- c(1,2,3,4)
+name <- c('apple', 'banana', 'cherry', 'peach')
+price <- c(500, 300, 800, 400)
+qty <- c(3,4,7,1)
+
+sales <- data.frame(no, name, price, qty) # 행의 값이 각각 다른 자료형 가능
+sales # 콘솔에서 확인 가능
+View(sales) # 표로 확인 가능 (대문자 V)
+
+
+
             
