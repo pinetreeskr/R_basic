@@ -30,7 +30,6 @@ for (page in 1:100)
 #  allreviews=c(allreviews,reviwe)
 }
 
-
 getwd() #데이터 저장경로 확인하기 
 
 df <- read.csv('/rstudio_files/r_basic/csv_exam.csv') #확인된 저장경로에 파일 저장 후 불러오기
@@ -55,6 +54,33 @@ qty <- c(3,4,7,1)
 sales <- data.frame(no, name, price, qty) # 행의 값이 각각 다른 자료형 가능
 sales # 콘솔에서 확인 가능
 View(sales) # 표로 확인 가능 (대문자 V)
+
+# 각 값을 꺼낼때
+# name값을 꺼내고 싶을 때
+sales[ ,2]  #[1] "apple"  "banana" "cherry" "peach" 
+
+#컬럼의 숫자를 외울필요없이 행의 값을 꺼내는 방법
+sales$name #[1] "apple"  "banana" "cherry" "peach" 
+
+# 첫번째 행과 두번째 행을 출력
+sales[c(1,2),] # 합하고싶을 땐 combine =c 사용
+sales[,c(2,3)]
+
+
+#특정 조건에 맞는 행 추출 = 서브셋 subset
+#subset(원본데이터, 조건) -- 참인 경우에만 해당하는 행 추출
+subset(sales, qty>3)
+subset(sales, name =="apple")
+subset(sales, price >= 400)
+
+# 특정 컬럼만 조회하고싶을 떄 (ex. 개인정보 보여주기 꺼려질 때)
+sales$name #name을 열로 추출
+subset(sales, price >= 400, select = name) # name 만 행으로 추출
+subset(sales, qty >=4, select = -price) # price만 "제외"하고 행으로 추출, 특정컬럼 제외
+
+#qty가 3개 이상인 행에서 name과 price만 추출
+subset(sales, qty>=3, select = c(name, price))
+
 
 
 
